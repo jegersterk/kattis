@@ -4,14 +4,10 @@
 
 using namespace std;
 
-int count_unique(string s[])
-{
-
-}
-
 int main()
 {
-    int a[4] = {1,4,2,3};
-     sort(a, a + 4);
-     cout << a[1];
+    string hehe[2];
+	hehe[0] = "asasasas";
+	cout << hehe[0].length();
+	return 0;
 }
