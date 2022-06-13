@@ -1,0 +1,47 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+char *dec2binStr(long long num, size_t len) {
+	char *str = (char*)malloc((len + 1) * sizeof(char));
+	if(!str) exit(EXIT_FAILURE);
+	str[len] = '\0';
+	while(len) {
+		str[--len] = '0' + num % 2;
+		num /= 2;
+	}
+	return str;
+}
+
+char **permOfBin(size_t len) {
+	char **astr = (char**)malloc((1<<len) * sizeof(char*));
+	if(!astr) exit(EXIT_FAILURE);
+	for(size_t i = 0; i < 1LLU<<len; i++) {
+		astr[i] = dec2binStr(i, len);
+	}
+	return astr;
+}
+
+
+
+int main() {
+	
+	char * str = dec2binStr(8,40);
+	printf("%s", str);
+	free(str);
+	
+	int  num = 5;
+	
+	char **sp = permOfBin(num);
+	
+	for(int i=0;i<1<<num;i++) {
+		printf("%s\n", sp[i]);
+	}
+	
+	for(int i=0;i<1<<num;i++) {
+		free(sp[i]);
+	}
+	free(sp);
+	
+	return 0;
+}
